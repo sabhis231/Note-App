@@ -1,24 +1,24 @@
-<nav class="navbar navbar-expand-lg bg-light navbar-dark bg-dark custom-navbar">
+<nav
+  class="navbar navbar-expand-lg navbar-dark navbar-dark bg-dark custom-navbar text-white"
+>
   <a class="navbar-brand" href="#">Note App</a>
-  <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <i
-          class="fa fa-pencil-square-o"
-          [ngClass]="blockAdd ? 'disable' : ''"
-          (click)="blockAdd ? false : addNewPost()"
-        >
-        </i>
-      </li>
-      <li class="nav-item">
-        <i
-          class="fa fa-trash"
-          [ngClass]="!isDeleteVisible ? 'disable' : ''"
-          (click)="!isDeleteVisible ? false : deletePost()"
-        ></i>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <i
+        class="fa fa-pencil-square-o"
+        [ngClass]="blockAdd ? 'disable' : ''"
+        (click)="blockAdd ? false : addNewPost()"
+      >
+      </i>
+      <i
+        class="fa fa-trash"
+        [ngClass]="!isDeleteVisible ? 'disable' : ''"
+        (click)="!isDeleteVisible ? false : deletePost()"
+      ></i>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown">
       <input
         class="form-control mr-sm-2 custom-search"
         type="text"
@@ -27,6 +27,6 @@
         name="searchData"
         (keyup)="onSearch()"
       />
-    </form>
-  </div>
+    </li>
+  </ul>
 </nav>

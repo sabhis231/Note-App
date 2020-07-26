@@ -8,6 +8,7 @@ export interface State {
   isNewAdded: boolean;
   isNewlyUpdates: boolean;
   searchContent: string;
+  isSearchedStop: boolean;
 }
 const initalState: State = {
   notes: [
@@ -28,6 +29,7 @@ const initalState: State = {
   isNewAdded: false,
   isNewlyUpdates: false,
   searchContent: null,
+  isSearchedStop: false,
 };
 
 export function notesReducer(
@@ -39,6 +41,7 @@ export function notesReducer(
       return {
         ...state,
         notes: action.payload,
+        isSearchedStop: true,
       };
     case fromNoteAction.ADD_NOTE:
       return {
@@ -49,6 +52,7 @@ export function notesReducer(
         isNewAdded: true,
         searchContent: null,
         isNewlyUpdates: true,
+        isSearchedStop: true,
       };
     case fromNoteAction.SELECT_NOTE:
       let currentNote = [...state.notes].findIndex((data) => {
@@ -59,6 +63,7 @@ export function notesReducer(
         selectedNote: action.payload,
         selectedNoteIndex: currentNote,
         isNewAdded: false,
+        isSearchedStop: true,
       };
     case fromNoteAction.UPDATE_NOTE:
       let updatedNotes = [...state.notes];
@@ -74,6 +79,7 @@ export function notesReducer(
         selectedNote: updatedNotes[state.selectedNoteIndex],
         searchContent: null,
         isNewlyUpdates: false,
+        isSearchedStop: true,
       };
     case fromNoteAction.DELETE_NOTE:
       let data = [...state.notes];
@@ -88,9 +94,11 @@ export function notesReducer(
         isNewlyUpdates: false,
       };
     case fromNoteAction.SEARCH_NOTE:
+      let isSearchedStop = action.payload ? false : true;
       return {
         ...state,
         searchContent: action.payload,
+        isSearchedStop: isSearchedStop,
       };
 
     default:

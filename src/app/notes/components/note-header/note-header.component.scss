@@ -40,3 +40,20 @@ i {
   /* Microsoft Edge */
   color: #b7b0b0;
 }
+
+@media only screen and (max-width: 780px) {
+  input {
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  input {
+    width: 90px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  input {
+    width: 56px;
+  }
+}

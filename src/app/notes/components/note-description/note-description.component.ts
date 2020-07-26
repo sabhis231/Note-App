@@ -23,6 +23,7 @@ export class NoteDescriptionComponent implements OnInit, OnChanges, OnDestroy {
   timestamp;
   searchString: string = null;
   sub: Subscription[] = [];
+  isSearchedStop: boolean = true;
 
   constructor(private notesSandbox: NotesSandbox) {}
 
@@ -30,8 +31,8 @@ export class NoteDescriptionComponent implements OnInit, OnChanges, OnDestroy {
     this.sub.push(
       this.notesSandbox.getState().subscribe((stateData) => {
         this.selectedNote = stateData.selectedNote;
-        // console.log(this.selectedNote);
         this.searchString = stateData.searchContent;
+        this.isSearchedStop = stateData.isSearchedStop;
 
         if (this.selectedNote) {
           this.title = this.selectedNote.title.replace(/↵/g, '\n');

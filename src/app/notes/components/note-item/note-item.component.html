@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="pl-2">
+      <p class="m-0">{{ title | stringSearchShort: "15":searchData }}</p>
+      <span>{{ note.timestamp | date }} </span>
+      <span class="text-black-50">
+        {{ description | stringSearchShort: "20":searchData }}</span
+      >
+    </div>
+  </div>
+</div>

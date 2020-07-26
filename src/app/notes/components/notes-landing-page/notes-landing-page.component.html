@@ -1,0 +1,15 @@
+<div class="row border-landing-page bg-dark text-white">
+  <div class="col-sm-4  scroll-y" appResizable>
+    <app-note-list
+      [notes]="notes"
+      [selectedNote]="selectedNote"
+      [searchData]="searchData"
+      (selectedData)="onSelectData($event)"
+    ></app-note-list>
+  </div>
+  <div class="col-sm-8 border-left scroll-y description">
+    <app-note-description></app-note-description>
+  </div>
+</div>
+
+<!-- border-right -->

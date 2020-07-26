@@ -1,0 +1,9 @@
+<div class="text-center text-black-50 date-font">
+  {{ searchString ? "" : (timestamp | date: "d MMM  y, h:mm a") }}
+</div>
+<textarea
+  [appcontenteditable]="selectedNote"
+  class="textarea text-white"
+  [value]="searchString ? '' : title"
+  >{{ searchString ? "" : title }}</textarea
+>

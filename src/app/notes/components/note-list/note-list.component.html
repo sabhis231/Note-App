@@ -1,0 +1,25 @@
+<div *ngIf="searchData">
+  <div class="row" *ngFor="let note of notes; let i = index">
+    <div
+      class="col-md-12 col border-bottom"
+      [ngClass]="note.id == selectedNote.id ? 'highlight-card' : ''"
+      *ngIf="note.title.toLowerCase().includes(searchData.toLowerCase())"
+    >
+      <app-note-item
+        [note]="note"
+        (click)="onSelect(note)"
+        [searchData]="searchData"
+      ></app-note-item>
+    </div>
+  </div>
+</div>
+<div *ngIf="!searchData">
+  <div class="row" *ngFor="let note of notes; let i = index">
+    <div
+      class="col-md-12 col border-bottom"
+      [ngClass]="note.id == selectedNote.id ? 'highlight-card' : ''"
+    >
+      <app-note-item [note]="note" (click)="onSelect(note)"></app-note-item>
+    </div>
+  </div>
+</div>

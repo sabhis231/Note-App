@@ -1,0 +1,33 @@
+.border-landing-page {
+  border: 1px solid grey;
+  min-height: 400px;
+  max-height: 400px;
+  // background: #fefefb;
+  margin-right: 0px;
+  margin-left: 0px;
+
+  // background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%);
+}
+.scroll-y {
+  overflow-y: scroll;
+  max-height: 400px;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: #6f6f6f;
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.description {
+  // box-shadow: 0 0 2px blue;
+  border: none;
+  background: #717171;
+  overflow-y: hidden;
+}

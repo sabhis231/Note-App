@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "note-app"
+    }
+  },
+  "defaultProject": "note-app",
+  "cli": {
+    "analytics": "ed9a7ec5-95c0-4fdf-9798-6478f16c4749"
+  }
 }

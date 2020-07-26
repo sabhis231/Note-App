@@ -1,0 +1,42 @@
+i {
+  margin: 0px 10px;
+  font-size: 20px;
+  background: #6f6f6f;
+  padding: 2px;
+  border-radius: 4px;
+  width: 44px;
+  text-align: center;
+}
+.bg-dark {
+  background-color: #31353a !important;
+}
+.custom-navbar {
+  padding: 4px 17px;
+}
+.custom-search {
+  height: 26px;
+  background: #6e6e6e;
+  outline: none;
+  border: none;
+  border-radius: 40px;
+  color: antiquewhite;
+}
+.disable {
+  color: #989898;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #b7b0b0;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #b7b0b0;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #b7b0b0;
+}

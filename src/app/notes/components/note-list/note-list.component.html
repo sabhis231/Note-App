@@ -1,4 +1,4 @@
-<div *ngIf="searchData">
+<div *ngIf="searchData; else noSearchData">
   <div class="row" *ngFor="let note of notes; let i = index">
     <div
       class="col-md-12 col border-bottom"
@@ -13,13 +13,21 @@
     </div>
   </div>
 </div>
-<div *ngIf="!searchData">
-  <div class="row" *ngFor="let note of notes; let i = index">
-    <div
-      class="col-md-12 col border-bottom"
-      [ngClass]="note.id == selectedNote.id ? 'highlight-card' : ''"
-    >
-      <app-note-item [note]="note" (click)="onSelect(note)"></app-note-item>
-    </div>
+<ng-template #noSearchData>
+  <div *ngIf="notes.length == 0; else noData" class="text-center font-secondary">
+    Please create your first note
   </div>
-</div>
+  <ng-template #noData>
+    <div class="row" *ngFor="let note of notes; let i = index">
+      <div
+        class="col-md-12 col border-bottom"
+        [ngClass]="note.id == selectedNote.id ? 'highlight-card' : ''"
+      >
+        <app-note-item [note]="note" (click)="onSelect(note)"></app-note-item>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
+<!-- <div *ngIf="!searchData">
+  
+</div> -->

@@ -1,13 +1,14 @@
-import { NotesService } from './../../service/notes.services';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { NotesSandbox } from './../../sandbox/notes.sandbox';
-import { Component, OnInit } from '@angular/core';
+import { NotesService } from './../../service/notes.services';
 
 @Component({
   selector: 'app-note-header',
   templateUrl: './note-header.component.html',
   styleUrls: ['./note-header.component.scss'],
 })
-export class NoteHeaderComponent implements OnInit {
+export class NoteHeaderComponent implements OnInit, OnDestroy {
   constructor(
     private notesSandbox: NotesSandbox,
     private notesService: NotesService
@@ -15,14 +16,19 @@ export class NoteHeaderComponent implements OnInit {
   searchData: string = '';
   blockAdd: boolean = false;
   isDeleteVisible: boolean = false;
+  sub: Subscription[] = [];
 
   ngOnInit(): void {
-    this.notesSandbox.getIsNewAddedComplete().subscribe((data) => {
-      this.blockAdd = data;
-    });
-    this.notesSandbox.getNotes().subscribe((notes) => {
-      this.isDeleteVisible = notes.length > 0 ? true : false;
-    });
+    this.sub.push(
+      this.notesSandbox.getIsNewAddedComplete().subscribe((data) => {
+        this.blockAdd = data;
+      })
+    );
+    this.sub.push(
+      this.notesSandbox.getNotes().subscribe((notes) => {
+        this.isDeleteVisible = notes.length > 0 ? true : false;
+      })
+    );
   }
 
   addNewPost() {
@@ -37,5 +43,8 @@ export class NoteHeaderComponent implements OnInit {
   }
   onSearch() {
     this.notesSandbox.searchNote(this.searchData);
+  }
+  ngOnDestroy() {
+    this.sub.forEach((s) => s.unsubscribe());
   }
 }
